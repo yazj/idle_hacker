@@ -16,7 +16,7 @@ int main() {
     std::cout << "Cannot load font file" << std::endl;
     return 1;
   }
-  sf::Text text(font, "Hello SFML, I'm Ready!", 26);
+  sf::Text text(font, "Hello SFML, I'm Ready!", 36);
   text.setFillColor(sf::Color::White);
   // -----------------------
   // window loop
