@@ -1,6 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/Font.hpp>
+#include <SFML/Window/Event.hpp>
+#include <SFML/Window/Mouse.hpp>
 #include <SFML/Window/WindowEnums.hpp>
 #include <iostream>
 
@@ -21,9 +23,12 @@ int main() {
   // -----------------------
   // window loop
   while (window.isOpen()) {
+    // handle input
     while (const std::optional event = window.pollEvent()) {
       if (event->is<sf::Event::Closed>()) {
         window.close();
+      }
+      if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
       }
     }
 
