@@ -1,6 +1,7 @@
 /**
  * @file Terminal.hpp
  * @brief Definition of the Terminal class for shell emulation.
+ * @author yuanyi
  *
  * This class simulates terminal behavior and manages the command-line interface
  * logic. It serves as the central controller for user-system interaction.
