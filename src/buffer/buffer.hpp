@@ -4,6 +4,7 @@
  * @author yuanyi
  *
  */
+#include <deque>
 #include <string>
 
 namespace buffer {
@@ -14,14 +15,14 @@ public:
   ~buffer();
 
   /**
-   * @brief Add new text and update the current screen text
-   * @param New text to add
+   * @brief Add a new line of text and update the current screen text
+   * @param New text to add, must end with '\n'
    */
-  void update_screen_text(std::string text);
+  void update_screen_text(const std::string &text);
 
 private:
-  std::string _history;     /**< Text of the history */
-  std::string _screen_text; /**< Text of the current screen */
+  std::deque<std::string> _history;     /**< Text of the history */
+  std::deque<std::string> _screen_text; /**< Text of the current screen */
 };
 
 } // namespace buffer
