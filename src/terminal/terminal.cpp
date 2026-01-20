@@ -14,15 +14,37 @@ terminal::terminal() : _current_state(terminal_state::waiting) {
   spdlog::info("terminal initialized");
 }
 
-/** TODO render text*/
 std::string terminal::generate_prompt() { return fmt::format("hello@ > "); }
 
 void terminal::execute_command(const std::string &command) {
   spdlog::info("executing conmmand {}", command);
-
-  // TODO add a new class 'command' to execute command string
-  // now is just a simple demo to make sure game can run
-  // RENDER TEXT
 }
+
+void terminal::run() {
+  // loop
+  spdlog::info("terminal start running");
+  while (1) {
+    // 这里我使用switch来实现一个状态机,
+    // 每个状态结束后, 会根据函数执行状态切换进下一个状态,
+    // 从而实现循环
+    switch (_current_state) {
+    case terminal_state::waiting:
+      terminal::do_waiting();
+      break;
+    case terminal_state::executing:
+      terminal::do_executing();
+      break;
+    case terminal_state::typing:
+      terminal::do_typing();
+      break;
+    }
+  }
+}
+
+void terminal::do_waiting() {};
+
+void terminal::do_executing() {};
+
+void terminal::do_typing() {};
 
 } // namespace terminal

@@ -53,6 +53,26 @@ public:
    */
   void execute_command(const std::string &command);
 
+  /**
+   * @brief Terminal loop
+   */
+  void run();
+
+  /**
+   * @brief waiting状态时执行一次
+   */
+  void do_waiting();
+
+  /**
+   * @brief executing状态时执行一次
+   */
+  void do_executing();
+
+  /**
+   * @brief typing状态时执行一次
+   */
+  void do_typing();
+
 private:
   terminal_state
       _current_state; /**< Current internal state of the state machine */
