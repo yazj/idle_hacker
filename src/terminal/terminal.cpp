@@ -46,9 +46,9 @@ void terminal::run() {
 
 void terminal::do_waiting() {
   spdlog::info("terminal is waiting");
-  // show the prompt every frame
-  generate_prompt();
-  // TODO render on the scrren
+
+  // TODO: 保证在状态改变前的所有循环只输出一次prompt到buffer
+  // 其余循环只进行文本渲染
 };
 
 void terminal::do_executing() { spdlog::info("terminal executing command"); };
