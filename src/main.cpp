@@ -1,39 +1,20 @@
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/Graphics/Font.hpp>
-#include <SFML/Window/Event.hpp>
-#include <SFML/Window/Mouse.hpp>
-#include <SFML/Window/WindowEnums.hpp>
-#include <iostream>
+#include "terminal/terminal.hpp"
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/spdlog.h>
 
 int main() {
-  auto window = sf::RenderWindow(sf::VideoMode({1920u, 1080u}),
-                                 "CMake SFML Project", sf::Style::Resize);
-  window.setFramerateLimit(60);
-  // load font
-  sf::Font font;
-  if (!font.openFromFile("assets/fonts/CodeNewRoman/"
-                         "CodeNewRomanNerdFontMono-Regular.otf")) {
-    // Fixme: should consider using spdlog
-    std::cout << "Cannot load font file" << std::endl;
-    return 1;
-  }
-  sf::Text text(font, "Hello SFML, I'm Ready!", 36);
-  text.setFillColor(sf::Color::White);
-  // -----------------------
-  // window loop
-  while (window.isOpen()) {
-    // handle input
-    while (const std::optional event = window.pollEvent()) {
-      if (event->is<sf::Event::Closed>()) {
-        window.close();
-      }
-      if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
-      }
-    }
 
-    window.clear();
-    window.draw(text);
-    window.display();
-  }
+  // init spdlog
+  auto console = spdlog::stdout_color_mt("console");
+  spdlog::set_default_logger(console);
+
+  spdlog::set_level(spdlog::level::debug);
+
+  // init terminal
+  terminal::terminal terminal;
+  terminal.init_terminal();
+
+  terminal.run();
+
+  return 0;
 }
