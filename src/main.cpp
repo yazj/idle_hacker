@@ -12,6 +12,8 @@ int main() {
 
   // init terminal
   terminal::terminal terminal;
+  terminal.init_terminal();
+
   terminal.run();
 
   return 0;

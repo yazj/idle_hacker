@@ -3,6 +3,8 @@
  * @author yuanyi
  */
 #include "terminal.hpp"
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/VideoMode.hpp>
 #include <spdlog/fmt/bundled/format.h>
 #include <spdlog/fmt/fmt.h>
 #include <spdlog/spdlog.h>
@@ -38,13 +40,24 @@ void terminal::run() {
       terminal::do_typing();
       break;
     }
+    _window.display();
   }
 }
 
-void terminal::do_waiting() {};
+void terminal::do_waiting() {
+  spdlog::info("terminal is waiting");
+  // show the prompt every frame
+  generate_prompt();
+  // TODO render on the scrren
+};
 
-void terminal::do_executing() {};
+void terminal::do_executing() { spdlog::info("terminal executing command"); };
 
-void terminal::do_typing() {};
+void terminal::do_typing() { spdlog::info("user is typing"); };
+
+void terminal::init_terminal() {
+  _window =
+      sf::RenderWindow(sf::VideoMode({800, 600}), "welcome to idle hacker!!");
+}
 
 } // namespace terminal

@@ -19,6 +19,9 @@
  */
 #pragma once
 
+#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/VideoMode.hpp>
 #include <string>
 namespace terminal {
 
@@ -54,6 +57,11 @@ public:
   void execute_command(const std::string &command);
 
   /**
+   * @breif Initialize terminal
+   */
+  void init_terminal();
+
+  /**
    * @brief Terminal loop
    */
   void run();
@@ -76,6 +84,9 @@ public:
 private:
   terminal_state
       _current_state; /**< Current internal state of the state machine */
+
+  // sfml window
+  sf::RenderWindow _window;
 };
 
 } // namespace terminal
