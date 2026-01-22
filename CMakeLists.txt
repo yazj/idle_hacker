@@ -31,9 +31,15 @@ set(SOURCES
     src/buffer/buffer.cpp
     src/input/input_handler.cpp)
 
-  add_executable(${PROJECT_NAME} ${SOURCES})
-  target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-  target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Window SFML::System SFML::Audio spdlog::spdlog)
+add_executable(${PROJECT_NAME} ${SOURCES})
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Window SFML::System SFML::Audio spdlog::spdlog)
+
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
+)
+
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT
                                                             ${PROJECT_NAME})
