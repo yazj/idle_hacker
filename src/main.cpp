@@ -10,9 +10,11 @@ int main() {
 
   spdlog::set_level(spdlog::level::debug);
 
-  // init terminal
   terminal::terminal terminal;
-  terminal.init_terminal();
+  render::render render;
+  buffer::buffer buffer;
+
+  terminal.init_terminal(buffer, render);
 
   terminal.run();
 

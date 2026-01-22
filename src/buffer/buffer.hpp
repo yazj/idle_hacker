@@ -11,8 +11,8 @@ namespace buffer {
 
 class buffer {
 public:
-  buffer();
-  ~buffer();
+  buffer() = default;
+  ~buffer() = default;
 
   /**
    * @brief Add a new line of text and update the current screen text

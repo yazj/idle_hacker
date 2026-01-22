@@ -19,6 +19,8 @@
  */
 #pragma once
 
+#include "buffer/buffer.hpp"
+#include "render/render.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/VideoMode.hpp>
@@ -59,7 +61,7 @@ public:
   /**
    * @breif Initialize terminal
    */
-  void init_terminal();
+  void init_terminal(buffer::buffer &buffer, render::render &render);
 
   /**
    * @brief Terminal loop
@@ -87,6 +89,9 @@ private:
 
   // sfml window
   sf::RenderWindow _window;
+
+  buffer::buffer *_p_buffer;
+  render::render *_p_render;
 };
 
 } // namespace terminal

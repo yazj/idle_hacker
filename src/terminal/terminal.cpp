@@ -55,9 +55,12 @@ void terminal::do_executing() { spdlog::info("terminal executing command"); };
 
 void terminal::do_typing() { spdlog::info("user is typing"); };
 
-void terminal::init_terminal() {
+void terminal::init_terminal(buffer::buffer &buffer, render::render &render) {
   _window =
       sf::RenderWindow(sf::VideoMode({800, 600}), "welcome to idle hacker!!");
+
+  _p_buffer = &buffer;
+  _p_render = &render;
 }
 
 } // namespace terminal
